@@ -38,6 +38,7 @@
 /// Common helper methods for implementation of different columns.
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 /// Counts how many bytes of `filt` are greater than zero.
 size_t count_bytes_in_filter(const IColumn::Filter& filt);
@@ -86,4 +87,5 @@ inline void column_match_filter_size(size_t size, size_t filter_size) {
     }
 }
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

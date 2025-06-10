@@ -20,6 +20,7 @@
 #include "column_nullable.h"
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 class ColumnFilterHelper {
 public:
     ColumnFilterHelper(IColumn&);
@@ -35,4 +36,5 @@ private:
     ColumnUInt8& _value_column;
     ColumnUInt8& _null_map_column;
 };
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

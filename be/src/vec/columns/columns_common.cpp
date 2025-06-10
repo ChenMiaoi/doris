@@ -30,6 +30,7 @@
 #include "vec/columns/column_array.h" // IWYU pragma: keep
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 template <PrimitiveType T>
 class ColumnVector;
@@ -388,4 +389,5 @@ INSTANTIATE(Decimal256, ColumnArray::Offset64)
 
 #undef INSTANTIATE
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

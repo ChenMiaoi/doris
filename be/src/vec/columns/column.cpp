@@ -27,6 +27,7 @@
 #include "vec/data_types/data_type.h"
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 std::string IColumn::dump_structure() const {
     std::stringstream res;
@@ -80,4 +81,5 @@ bool is_column_const(const IColumn& column) {
     return is_column<ColumnConst>(column);
 }
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

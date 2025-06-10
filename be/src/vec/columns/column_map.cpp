@@ -37,6 +37,7 @@
 class SipHash;
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 /** A column of map values.
   */
@@ -557,4 +558,5 @@ void ColumnMap::erase(size_t start, size_t length) {
     }
 }
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

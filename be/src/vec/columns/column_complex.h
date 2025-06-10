@@ -36,6 +36,7 @@
 #include "vec/core/types.h"
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 template <PrimitiveType T>
 class ColumnComplexType final : public COWHelper<IColumn, ColumnComplexType<T>> {
@@ -82,14 +83,14 @@ public:
         }
     }
 
-    void insert_many_continuous_binary_data(const char* data, const uint32_t* offsets,
+    void insert_many_continuous_binary_data(const char* data_, const uint32_t* offsets,
                                             const size_t num) override {
         if (UNLIKELY(num == 0)) {
             return;
         }
         // the offsets size should be num + 1
         for (size_t i = 0; i != num; ++i) {
-            insert_binary_data(data + offsets[i], offsets[i + 1] - offsets[i]);
+            insert_binary_data(data_ + offsets[i], offsets[i + 1] - offsets[i]);
         }
     }
 
@@ -398,4 +399,5 @@ struct is_complex<TYPE_QUANTILE_STATE> : std::true_type {};
 template <PrimitiveType T>
 constexpr bool is_complex_v = is_complex<T>::value;
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

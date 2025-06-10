@@ -47,6 +47,7 @@
 class SipHash;
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 class Arena;
 /** A column of map values.
@@ -207,4 +208,5 @@ private:
     ColumnMap(const ColumnMap&) = default;
 };
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

@@ -50,6 +50,7 @@ class SipHash;
 #define ALL_COLUMNS_SIMPLE ALL_COLUMNS_NUMERIC, ColumnString
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 class Arena;
 
@@ -266,4 +267,5 @@ private:
     size_t filter_generic(const Filter& filter);
 };
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

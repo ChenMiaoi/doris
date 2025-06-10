@@ -24,6 +24,7 @@
 #include "vec/columns/column_dummy.h"
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 using ConstSetPtr = std::shared_ptr<HybridSetBase>;
 
@@ -47,4 +48,5 @@ private:
     ConstSetPtr data;
 };
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

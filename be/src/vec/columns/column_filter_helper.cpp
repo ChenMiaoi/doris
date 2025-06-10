@@ -18,6 +18,7 @@
 #include "vec/columns/column_filter_helper.h"
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 ColumnFilterHelper::ColumnFilterHelper(IColumn& column_)
         : _column(assert_cast<ColumnNullable&>(column_)),
           _value_column(assert_cast<ColumnUInt8&>(_column.get_nested_column())),
@@ -38,4 +39,5 @@ void ColumnFilterHelper::reserve(size_t size) {
     _null_map_column.reserve(size);
 }
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

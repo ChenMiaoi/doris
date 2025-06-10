@@ -41,6 +41,7 @@ template <typename T>
 bool decimal_less(T x, T y, doris::vectorized::UInt32 x_scale, doris::vectorized::UInt32 y_scale);
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 template <PrimitiveType T>
 int ColumnDecimal<T>::compare_at(size_t n, size_t m, const IColumn& rhs_, int) const {
@@ -532,4 +533,5 @@ template class ColumnDecimal<TYPE_DECIMAL64>;
 template class ColumnDecimal<TYPE_DECIMALV2>;
 template class ColumnDecimal<TYPE_DECIMAL128I>;
 template class ColumnDecimal<TYPE_DECIMAL256>;
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

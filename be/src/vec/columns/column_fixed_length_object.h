@@ -31,6 +31,7 @@
 #include "vec/common/sip_hash.h"
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 class ColumnFixedLengthObject final : public COWHelper<IColumn, ColumnFixedLengthObject> {
 private:
@@ -315,4 +316,5 @@ protected:
     size_t _item_count;
     Container _data;
 };
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

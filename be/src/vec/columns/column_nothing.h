@@ -23,6 +23,7 @@
 #include "vec/columns/column_dummy.h"
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 class ColumnNothing final : public COWHelper<IColumnDummy, ColumnNothing> {
 private:
@@ -48,4 +49,5 @@ public:
     }
 };
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

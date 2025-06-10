@@ -40,6 +40,7 @@
 class SipHash;
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 class Arena;
 class ColumnSorter;
@@ -754,4 +755,5 @@ struct ColumnPtrWrapper {
 
     ColumnPtrWrapper(vectorized::ColumnPtr col) : column_ptr(std::move(col)) {}
 };
+#include "common/compile_check_end.h"
 } // namespace doris

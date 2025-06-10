@@ -42,6 +42,7 @@
 class SipHash;
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 ColumnArray::ColumnArray(MutableColumnPtr&& nested_column, MutableColumnPtr&& offsets_column)
         : data(std::move(nested_column)), offsets(std::move(offsets_column)) {
@@ -1092,4 +1093,5 @@ void ColumnArray::erase(size_t start, size_t length) {
     }
 }
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

@@ -53,6 +53,7 @@
 class SipHash;
 
 namespace doris {
+#include "common/compile_check_begin.h"
 namespace vectorized {
 class Arena;
 } // namespace vectorized
@@ -492,4 +493,5 @@ private:
     void unnest(Subcolumns::NodePtr& entry, Subcolumns& subcolumns) const;
 };
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

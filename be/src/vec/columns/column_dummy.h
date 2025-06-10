@@ -26,6 +26,7 @@
 #include "vec/common/pod_array.h"
 
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 
 /** Base class for columns-constants that contain a value that is not in the `Field`.
   * Not a full-fledged column and is used in a special way.
@@ -38,7 +39,7 @@ public:
 public:
     virtual MutableColumnPtr clone_dummy(size_t s_) const = 0;
 
-    MutableColumnPtr clone_resized(size_t s) const override { return clone_dummy(s); }
+    MutableColumnPtr clone_resized(size_t s_) const override { return clone_dummy(s_); }
     size_t size() const override { return s; }
     void insert_default() override { ++s; }
     void pop_back(size_t n) override { s -= n; }
@@ -162,4 +163,5 @@ protected:
     size_t s;
 };
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized

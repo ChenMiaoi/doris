@@ -28,6 +28,7 @@
 #include "vec/common/string_ref.h"
 #include "vec/json/path_in_data.h"
 namespace doris::vectorized {
+#include "common/compile_check_begin.h"
 // Tree that represents paths in document with additional data in nodes.
 // IsShared mean this object shared above multiple tasks, need swtich to subcolumns_tree_tracker
 template <typename NodeData, bool IsShared>
@@ -70,15 +71,16 @@ public:
             kind = Kind::SCALAR;
         }
 
-        void add_child(std::string_view key, std::shared_ptr<Node> next_node, Arena& strings_pool) {
+        void add_child(std::string_view key, std::shared_ptr<Node> next_node,
+                       Arena& strings_pool_) {
             next_node->parent = this;
             StringRef key_ref;
             if constexpr (IsShared) {
                 SCOPED_SWITCH_THREAD_MEM_TRACKER_LIMITER(
                         ExecEnv::GetInstance()->subcolumns_tree_tracker());
-                key_ref = {strings_pool.insert(key.data(), key.length()), key.length()};
+                key_ref = {strings_pool_.insert(key.data(), key.length()), key.length()};
             } else {
-                key_ref = {strings_pool.insert(key.data(), key.length()), key.length()};
+                key_ref = {strings_pool_.insert(key.data(), key.length()), key.length()};
             }
             children[key_ref] = std::move(next_node);
         }
@@ -354,4 +356,5 @@ private:
     Nodes leaves;
 };
 
+#include "common/compile_check_end.h"
 } // namespace doris::vectorized
